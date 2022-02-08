@@ -15,29 +15,32 @@ public class HalconMilenario {
 static int intentos = 0;
     public static void calentando(){
         System.out.println("Iniciando calentado");
-        int valor = (int)(Math.random()*(500-400)+400);
+        int valor = (int)(Math.random()*(450-350 + 1)+350);
         if(valor>430){
             System.out.println("Intento fallido, reiniciando sistema");
-        }if(valor<400){
+            calentado();
+            intentos = 0;
+        }else if(valor<400){
             intentos++;
             System.out.println("Este es el intento "+intentos+" se obtuvo el número "+valor+" intentando de nuevo");
             calentando();
-        }else{
+        }else if(valor>400 && valor<430){
             System.out.println("Motor calentando, iniciando el modo de arranque");
             arranque();
         }
     }
     private static void arranque(){
         System.out.println("Iniciando el arranque");
-        int valor = (int)(Math.random()*(650-600)+600);
+        int valor = (int)(Math.random()*(650-550 + 1)+550);
         if(valor>615){
            System.out.println("Intento fallido, reiniciando sistema"); 
            calentando();
-        }if(valor<600){
+           intentos = 0;
+        }else if(valor<600){
             intentos++;
             System.out.println("Este es el intento "+intentos+" se obtuvo el número "+valor+" intentando de nuevo");
             arranque();
-        }else{
+        }else if(valor<615 && valor>600){
             System.out.println("Motor arrancado exitosamente, iniciando el modo de aceleración");
             aceleracion();
         }
@@ -45,15 +48,16 @@ static int intentos = 0;
     }
     private static void aceleracion(){
         System.out.println("Iniciando la aceleración");
-        int valor = (int)(Math.random()*(300-200)+200);
+        int valor = (int)(Math.random()*(300-150 +1)+150);
         if(valor>213){
            System.out.println("Intento fallido, reiniciando sistema"); 
            calentando();
-        }if(valor<200){
+           intentos = 0;
+        }else if(valor<200){
             intentos++;
             System.out.println("Este es el intento "+intentos+" se obtuvo el número "+valor+" intentando de nuevo");
             aceleracion();
-        }else{
+        }else if(valor<213 && valor>200){
             System.out.println("Motor acelerado exitosamente, iniciando el hiperespacio");
             hiperespacio();
         }
@@ -64,19 +68,18 @@ static int intentos = 0;
         if(valor>117){
            System.out.println("Intento fallido, reiniciando sistema"); 
            calentando();
-        }if(valor<113){
+           intentos = 0;
+        }else if(valor<113){
             intentos++;
             System.out.println("Este es el intento "+intentos+" se obtuvo el número "+valor+" intentando de nuevo");
             hiperespacio();
-        }else{
+        }else if(valor<117 && valor>113){
             System.out.println("El hiperespacio esta listo");
-            fin();
+            System.out.println("El numero de intentos totales fueron "+intentos);
+            System.out.println("Entrando en hiperespacio en...3...2...1");
         }
     }
-    private static void fin(){
-        System.out.println("El numero de intentos totales fueron "+intentos);
-        System.out.println("Entrando en hiperespacio en...3...2...1");
-    }
+
     /**
      * @param args the command line arguments
      */
